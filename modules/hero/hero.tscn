@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2fnksqpgra2i"]
+
+[ext_resource type="Script" path="res://modules/hero/hero.gd" id="1_acjp8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yx2l"]
+radius = 16.0
+height = 80.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m233c"]
+radius = 4.0
+
+[node name="Hero" type="CharacterBody2D" node_paths=PackedStringArray("_pogo_jump_pad_area")]
+position = Vector2(568, 280)
+collision_layer = 0
+script = ExtResource("1_acjp8")
+_pogo_jump_pad_area = NodePath("PogoJumpPad")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_2yx2l")
+
+[node name="PogoJumpPad" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PogoJumpPad"]
+position = Vector2(0, 40)
+shape = SubResource("CapsuleShape2D_m233c")
+debug_color = Color(0.701961, 0.054902, 0.509804, 0.419608)
